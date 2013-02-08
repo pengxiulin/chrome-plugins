@@ -2,25 +2,22 @@
     "name": "凤凰读书",
     "version": "0.0.0.1",
     "manifest_version": 2,
-    "description": "godojd",
-    //"background": { "scripts": ["js/background.js"] },
+    "description": "凤凰读书插件，提升凤凰图书读书体验",
     "browser_action": {
         "default_icon": "img/logo-48.png",
-        "default_title":"JD增强",
-        "default_popup": "popup.html"
+        "default_title":"凤凰读书插件"
     },
     "content_scripts": [ { 
         "js": [ "js/operate.js" ], 
         "matches": [ "http://v.book.ifeng.com/*" ], 
         "run_at": "document_end" 
     }], 
-      "icons": {
+    "icons": {
         "128": "img/logo-128.png",
         "48": "img/logo-48.png",
         "16": "img/logo-16.png"
     },
     "permissions":[
-        "notifications",
         "tabs",
         "http://*.book.ifeng.com/"
     ]

@@ -1,0 +1,98 @@
+@charset "utf-8";
+#box-ifplugin{
+    position:absolute;
+    width: 100%;
+    background: #f3f2ee;
+}
+#box-ifplugin .read-popup{
+    width: 600px;
+    margin:auto;
+}
+#box-ifplugin .title h2{
+    border-bottom: 1px solid #c5c5c5;
+    font-size: 1.875em;
+    font-weight:normal;
+    padding-bottom: 10px;
+}
+
+/*以下样式摘自Clearly*/
+/*reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+ol, ul { list-style: none; }
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* headings */
+#box-ifplugin h1, #box-ifplugin h2, #box-ifplugin h3, #box-ifplugin h4, #box-ifplugin h5, #box-ifplugin h6 { font-weight: bold; }
+#box-ifplugin h1 { font-size: 1.875em; /*30 / 16*/ line-height: 1.6em; /* 48 / 30*/ }
+#box-ifplugin h2, #box-ifplugin h3 { font-size: 1.3125em; /*21 / 16*/ line-height: 1.15; /*24 / 21*/ margin-top: 2.285714em; /*48 / 21*/ margin-bottom: 1.15em; /*24 / 21*/ }
+#box-ifplugin h3 { font-weight: normal; }
+#box-ifplugin h4 { font-size: 1.125em;/*18 / 16*/ margin-top: 2.67em; /*48 / 18*/   }
+#box-ifplugin h5, #box-ifplugin h6 { font-size: 1em; /*16*/ }
+#box-ifplugin #articleHeader { border-bottom: 1px solid; margin-bottom: 1.875em;  padding-bottom: 0.8125em; }
+#box-ifplugin #relatedNotes { border-top: 1px solid; }
+
+/* links */
+#box-ifplugin a { text-decoration: none; }
+#box-ifplugin a:hover, a:active { text-decoration: underline; }
+
+/* block spacing */
+#box-ifplugin p, #box-ifplugin blockquote, #box-ifplugin div { margin-bottom: 1.5em; }
+#box-ifplugin h1, #box-ifplugin h2, #box-ifplugin h3, #box-ifplugin h4, #box-ifplugin h5, #box-ifplugin h6 { margin-bottom: 1.5em; }
+#box-ifplugin div.readableLargeImageContainer, #box-ifplugin div.readableLargeObjectContainer { margin-bottom: 1em; margin-top:1em; }
+
+/* blockquote */
+#box-ifplugin blockquote { font-style: italic; border-left: 5px solid; margin-left: 2em; padding-left: 1em; }
+
+/* lists */
+#box-ifplugin ul, #box-ifplugin ol { margin: 0 0 1.5em 1.5em; }
+#box-ifplugin ol li { list-style-type: decimal; list-style-position: outside; }
+#box-ifplugin ul li { list-style-type: disc; list-style-position: outside; }
+
+/* tables */
+#box-ifplugin table { margin-bottom: 1.5em; /*24 / 16*/ font-size: 1em; /* width: 100%; */ }
+#box-ifplugin thead th, #box-ifplugin tfoot th { padding: .25em .25em .25em .4em; text-transform: uppercase; }
+#box-ifplugin th { text-align: left; }
+#box-ifplugin td { vertical-align: top; padding: .25em .25em .25em .4em; }
+
+/* formatting */
+#box-ifplugin em, #box-ifplugin i { font-style: italic; }
+#box-ifplugin strong, #box-ifplugin b { font-weight: bold; }
+
+/* preformatted */
+#box-ifplugin pre, #box-ifplugin code, #box-ifplugin tt { font-size: .875em; line-height: 1.714285em; }
+
+/* some fixes */
+#box-ifplugin h1 { line-height: 1.3em; font-weight: normal;  margin-bottom: 0.5em; }
+#box-ifplugin h1 + h2 { margin-top: .2em; margin-bottom: 2.15em; font-size: .875em; }
+#box-ifplugin p + ul, #box-ifplugin h2 + ul, #box-ifplugin p + ol, #box-ifplugin h2 + ol { margin-top:-1em; }
+#box-ifplugin h3 + ul, #box-ifplugin h4 + ul, #box-ifplugin h5 + ul, #box-ifplugin h6 + ul, #box-ifplugin h3 + ol, #box-ifplugin h4 + ol, #box-ifplugin h5 + ol, #box-ifplugin h6 + ol { margin-top: .5em; }
+#box-ifplugin h2, #box-ifplugin h3 { margin-bottom: .75em; }
+

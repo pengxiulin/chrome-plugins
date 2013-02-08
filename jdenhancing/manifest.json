@@ -1,0 +1,27 @@
+{
+    "name": "Enhancing JD",
+    "version": "0.0.0.1",
+    "manifest_version": 2,
+    "description": "godojd",
+    //"background": { "scripts": ["js/background.js"] },
+    "browser_action": {
+        "default_icon": "img/logo-48.png",
+        "default_title":"JD增强",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [ { 
+        "js": [ "js/operate.js" ], 
+        "matches": [ "http://www.360buy.com/" ], 
+        "run_at": "document_idle" 
+    }], 
+      "icons": {
+        "128": "img/logo-128.png",
+        "48": "img/logo-48.png",
+        "16": "img/logo-16.png"
+    },
+    "permissions":[
+        "notifications",
+        "tabs",
+        "http://*.360buy.com/","https://*.360buy.com/"
+    ]
+}

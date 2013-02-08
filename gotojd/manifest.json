@@ -1,0 +1,17 @@
+{
+    "name": "gotojd",
+    "version": "0.0.0.1",
+    "manifest_version": 2,
+    "description": "godojd",
+    "app": {
+        "launch": {
+            "web_url": "http://www.360buy.com/"
+        },
+        "urls": [ "http://www.360buy.com/" ]
+    },
+    "icons": {
+        "128": "img/logo-128.png",
+        "48": "img/logo-48.png",
+        "16": "img/logo-16.png"
+    } 
+}

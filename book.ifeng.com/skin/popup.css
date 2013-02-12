@@ -1,8 +1,14 @@
 @charset "utf-8";
+body{
+    overflow: hidden;
+}
 #box-ifplugin{
     position:absolute;
+    top:0;
+    left:1000px;
     width: 100%;
     background: #f3f2ee;
+    -webkit-transition: all .5s ease-out;
 }
 #box-ifplugin .read-popup{
     width: 600px;

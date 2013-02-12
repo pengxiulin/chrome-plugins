@@ -7,11 +7,11 @@
         "default_icon": "img/logo-48.png",
         "default_title":"凤凰读书插件"
     },
-    "content_scripts": [ { 
-        "js": [ "js/operate.js" ], 
-        "matches": [ "http://v.book.ifeng.com/*" ], 
-        "run_at": "document_end" 
-    }], 
+    "content_scripts": [ {
+        "js": [ "js/main.js" ],
+        "matches": [ "http://v.book.ifeng.com/*" ],
+        "run_at": "document_end"
+    }],
     "icons": {
         "128": "img/logo-128.png",
         "48": "img/logo-48.png",

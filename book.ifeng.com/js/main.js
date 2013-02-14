@@ -1,9 +1,9 @@
-var loadArticle = function(b,c){
+var loadArticle = function(b,c,title){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(xhr.readyState==4&&xhr.status==200){
             var response = JSON.parse(xhr.responseText);
-            showContent(b,response.content);
+            showContent(title,response.content);
         }
     }
     xhr.open("POST","http://v.book.ifeng.com/book/remc.htm",true);
@@ -13,7 +13,7 @@ var loadArticle = function(b,c){
 var clickHandler = function(e){
     var c = e.target.href;
     c = c.substring(c.indexOf(b)+b.length+1,c.indexOf(".htm"));
-    loadArticle(b,c);
+    loadArticle(b,c,e.target.innerText);
     e.preventDefault();
 }
 l = location.href;//为了简化后续字符操作而做的变量名称简化
@@ -36,13 +36,14 @@ console.log(articleList);
 
 function showContent(title,content){
     var currentScrollLocation = window.scrollY;
-    if(true){// TODO are there dom box-ifplugin exists in the page?
+    var elem_box = document.querySelector("#box-ifplugin");
+    if(!elem_box){// Are there dom box-ifplugin exists in the page?
         // if not exists then create it!
         createDomElement(title,content);
+        elem_box = document.querySelector("#box-ifplugin");
     }else{
         updateDomElement(title,content);
     }
-    var elem_box = document.querySelector("#box-ifplugin");
     var keydownHandler = function(e){
         if(e.keyCode == 27){//ESC pressed
             close();
@@ -76,12 +77,21 @@ function showContent(title,content){
     setTimeout(function(){
         document.querySelector("#box-ifplugin .read-popup").style.left="0";
         elem_box.style.opacity=1;
+        window.scrollTo(0,0);
     },1);
-    document.body.style.height = elem_box.scrollHeight;
-    window.scrollTo(0,0);
+    function hidePageContent(){
+        document.querySelector(".book_neirong").style.display="none";
+    }
+    function showPageContent(){
+        document.querySelector(".book_neirong").style.display="block";
+    }
+    hidePageContent();
     function close(){
         elem_box.style.display="none";
         document.body.style.height = "auto";
+        showPageContent();
+        // TODO temprary mesure, this line is to be removed
+        elem_box.remove();
         window.scrollTo(0,currentScrollLocation);
     }
 }

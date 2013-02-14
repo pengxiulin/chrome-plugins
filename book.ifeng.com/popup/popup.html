@@ -35,9 +35,11 @@ function showContent(title,content){
         document.body.appendChild(elem_box_ifplugin);
     }
     setTimeout(function(){
-        var div_popup = document.querySelector("#box-ifplugin .read-popup");
-        div_popup.style.left="0";
-        document.querySelector("#box-ifplugin").style.opacity=1;
+        document.querySelector("#box-ifplugin .read-popup").style.left="0";
+        elem_box.style.opacity=1;
+        setTimeout(function(){
+            window.scrollTo(0,0);
+        },500);
     },1);
     document.body.scrollHeight = document.querySelector("#box-ifplugin").scrollHeight;
 }

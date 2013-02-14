@@ -9,9 +9,14 @@
     },
     "content_scripts": [ {
         "js": [ "js/main.js" ],
+        "css": ["skin/popup.css"],
         "matches": [ "http://v.book.ifeng.com/*" ],
         "run_at": "document_end"
     }],
+    "background": {
+        "scripts": ["js/operate.js"],
+        "persistent": false
+    },
     "icons": {
         "128": "img/logo-128.png",
         "48": "img/logo-48.png",

@@ -3,7 +3,7 @@ var loadArticle = function(b,c){
     xhr.onreadystatechange = function(){
         if(xhr.readyState==4&&xhr.status==200){
             var response = JSON.parse(xhr.responseText);
-            showContent(response.content);
+            showContent(b,response.content);
         }
     }
     xhr.open("POST","http://v.book.ifeng.com/book/remc.htm",true);
@@ -34,7 +34,54 @@ for(var i=0;i<elem_length;i++){
 item = null;
 console.log(articleList);
 
-function showContent(content){
-    // TODO 将这里内容以弹出层展示
-    console.log(content);
+function showContent(title,content){
+    var currentScrollLocation = window.scrollY;
+    if(true){// TODO are there dom box-ifplugin exists in the page?
+        // if not exists then create it!
+        createDomElement(title,content);
+    }else{
+        updateDomElement(title,content);
+    }
+    var elem_box = document.querySelector("#box-ifplugin");
+    var keydownHandler = function(e){
+        if(e.keyCode == 27){//ESC pressed
+            close();
+        }
+    }
+    window.addEventListener("keydown",keydownHandler,false);
+    var prev = function(){};
+    var next = function(){};
+    function createDomElement(title,content){
+        var elem_box_ifplugin = document.createElement("div");
+        elem_box_ifplugin.setAttribute("id","box-ifplugin");
+        var elem_read_popup = document.createElement("div");
+        elem_read_popup.setAttribute("class","read-popup");
+        var elem_title = document.createElement("div");
+        elem_title.setAttribute("class","title");
+        var elem_h2 = document.createElement("h2");
+        elem_h2.innerHTML = title;
+        elem_title.appendChild(elem_h2);
+        var elem_content = document.createElement("div");
+        elem_content.setAttribute("class","content");
+        elem_content.innerHTML = content;
+        elem_read_popup.appendChild(elem_title);
+        elem_read_popup.appendChild(elem_content);
+        elem_box_ifplugin.appendChild(elem_read_popup);
+        document.body.appendChild(elem_box_ifplugin);
+    }
+    function updateDomElement(title,content){
+        var elem_content = document.querySelector("#box-ifplugin .content");
+        elem_content.innerHTML = content;
+    };
+    setTimeout(function(){
+        document.querySelector("#box-ifplugin .read-popup").style.left="0";
+        elem_box.style.opacity=1;
+    },1);
+    document.body.style.height = elem_box.scrollHeight;
+    window.scrollTo(0,0);
+    function close(){
+        elem_box.style.display="none";
+        document.body.style.height = "auto";
+        window.scrollTo(0,currentScrollLocation);
+    }
 }

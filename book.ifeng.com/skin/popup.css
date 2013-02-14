@@ -1,24 +1,29 @@
 @charset "utf-8";
-body{
-    overflow: hidden;
-}
 #box-ifplugin{
     position:absolute;
     top:0;
-    left:1000px;
     width: 100%;
     background: #f3f2ee;
+    opacity:0;
+    overflow-x: hidden;
     -webkit-transition: all .5s ease-out;
 }
 #box-ifplugin .read-popup{
     width: 600px;
     margin:auto;
+    overflow-x: hidden;
+    position: relative;
+    left: 1000px;
+    -webkit-transition: all .5s ease-out;
 }
 #box-ifplugin .title h2{
     border-bottom: 1px solid #c5c5c5;
     font-size: 1.875em;
     font-weight:normal;
     padding-bottom: 10px;
+}
+#box-ifplugin .content{
+    font-size: 16px;
 }
 
 /*以下样式摘自Clearly*/

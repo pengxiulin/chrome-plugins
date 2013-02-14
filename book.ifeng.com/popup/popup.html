@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>弹出层测试</title>
-    <meta http-equiv="refresh" content="2"/>
+    <!-- <meta http-equiv="refresh" content="2"/> -->
     <link rel="stylesheet" href="../skin/popup.css"/>
 </head>
 <body>
@@ -34,11 +34,12 @@ function showContent(title,content){
         elem_box_ifplugin.appendChild(elem_read_popup);
         document.body.appendChild(elem_box_ifplugin);
     }
-    var box = document.getElementById("box-ifplugin");
-    // box.style.left="0";
     setTimeout(function(){
-        box.style.left="0";
+        var div_popup = document.querySelector("#box-ifplugin .read-popup");
+        div_popup.style.left="0";
+        document.querySelector("#box-ifplugin").style.opacity=1;
     },1);
+    document.body.scrollHeight = document.querySelector("#box-ifplugin").scrollHeight;
 }
 showContent("title",content);
 </script>

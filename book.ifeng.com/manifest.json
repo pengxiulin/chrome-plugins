@@ -5,16 +5,16 @@
     "description": "凤凰读书插件，提升凤凰图书读书体验",
     "browser_action": {
         "default_icon": "img/logo-48.png",
-        "default_title":"凤凰读书插件"
+        "default_title":"凤凰读书"
     },
     "content_scripts": [ {
         "js": [ "js/main.js" ],
         "css": ["skin/popup.css"],
-        "matches": [ "http://v.book.ifeng.com/*" ],
+        "matches": [ "http://v.book.ifeng.com/book/*" ],
         "run_at": "document_end"
     }],
     "background": {
-        "scripts": ["js/operate.js"],
+        "scripts": ["js/operate.js"],//When click icon,goto v.book.ifeng.com
         "persistent": false
     },
     "icons": {
@@ -24,6 +24,6 @@
     },
     "permissions":[
         "tabs",
-        "http://*.book.ifeng.com/"
+        "http://v.book.ifeng.com/"
     ]
 }

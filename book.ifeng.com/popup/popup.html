@@ -9,11 +9,23 @@
 <body>
     <h2>There are many things here!</h2>
 <script type="text/javascript">
-var content = "&nbsp;&nbsp;&nbsp;&nbsp;　　楔子<br /><br />　　北风呼呼的吹，灌进脖子里。于男缩缩脖子，跺着脚在民政局门口等着。今天是她和任晓领结婚证的日子。已经过了约定时间四十分钟了，还不见任晓。民政局门口的老大爷几次从窗口探出头，又几次缩回去。<br /><br />　　……<br /><br />　　把红红的小本子放进包里。坐在公交车上，于男看着窗外。任晓坐在靠走道的一边，举着电话，大声呵斥着。刚才那一幕象是没彩排好的剧目。两个人像木偶似的站在台子上，对着摄像机大声的宣誓。于男迁就着任晓的声音和语速。看录像的时候，于男脑子里冒出阿Q的话：圈不够圆。<br /><br />　　肯德基又坐满了人。已经到晚饭时间了。于男才意识到，自己已经坐了一个下午。本来说好一起吃饭，然后晚上看电影的。电影票都买好了。结果还没到饭店，任晓就被他姐姐叫走了。他姐两口子正在打离婚。于男看着嘴里嘟囔着祖宗十八代的任晓，几欲开口，又咽了回去。<br /><br />　　终于不能再坐下去了。于男决定还是回家吧。";
+var content = "&nbsp;&nbsp;&nbsp;&nbsp;　　楔子<br /><br />　　北风呼呼的吹，灌进脖子里。于男缩缩脖子，跺着脚在民政局门口等着。今天是她和任晓领结婚证的日子。已经过了约定时间四十分钟了，还不见任晓。民政局门口的老大爷几次从窗口探出头，又几次缩回去。<br /><br />　　……<br /><br />　　把红红的小本子放进包里。坐在公交车上，于男看着窗外zhi。任晓坐在靠走道的一边，举着电话，大声呵斥着。刚才那一幕象是没彩排好的剧目。两个人像木偶似的站在台子上，对着iiim摄像机大声的宣誓。于男迁就着任晓的声音和语速。看录像的时候，于男mm脑子里冒出阿Q的话：圈不够圆。<br /><br />　　肯德基又坐满了人。已经到晚饭时间了。于男才意识到，自己已经坐了一个下午。本来说好一起吃饭，然后晚上看电影的。电影票都买好了。结果还没到饭店，任晓就被他姐姐叫走了。他姐两口子正在打离婚。于男看着嘴里嘟囔着祖宗十八代的任晓，几欲开口，又咽了回去。<br /><br />　　终于不能再坐下去了。于男决定还是回家吧。<br/>public static void main (String[] args){<br/>&nbsp;&nbsp;&nbsp;&nbsp;oO0public class<br/>}";
 function showContent(title,content){
-    createDomElement(title,content);
-    var elem_content = document.querySelector("#box-ifplugin .content");
-    elem_content.innerHTML = content;
+    var currentScrollLocation = window.scrollY;
+    var elem_box = document.querySelector("#box-ifplugin");
+    if(!elem_box){// Are there dom box-ifplugin exists in the page?
+        // if not exists then create it!
+        createDomElement(title,content);
+        elem_box = document.querySelector("#box-ifplugin");
+    }else{
+        updateDomElement(title,content);
+    }
+    var keydownHandler = function(e){
+        if(e.keyCode == 27){//ESC pressed
+            close();
+        }
+    }
+    window.addEventListener("keydown",keydownHandler,false);
     var prev = function(){};
     var next = function(){};
     function createDomElement(title,content){
@@ -34,14 +46,36 @@ function showContent(title,content){
         elem_box_ifplugin.appendChild(elem_read_popup);
         document.body.appendChild(elem_box_ifplugin);
     }
+    function updateDomElement(title,content){
+        var elem_content = document.querySelector("#box-ifplugin .content");
+        elem_content.innerHTML = content;
+    };
     setTimeout(function(){
         document.querySelector("#box-ifplugin .read-popup").style.left="0";
         elem_box.style.opacity=1;
-        setTimeout(function(){
-            window.scrollTo(0,0);
-        },500);
+        window.scrollTo(0,0);
     },1);
-    document.body.scrollHeight = document.querySelector("#box-ifplugin").scrollHeight;
+    function hidePageContent(){
+        var neirong = document.querySelector(".book_neirong");
+        if(neirong){
+            neirong.style.display="none";
+        }
+    }
+    function showPageContent(){
+        var neirong = document.querySelector(".book_neirong");
+        if(neirong){
+            neirong.style.display="block";
+        }
+    }
+    hidePageContent();
+    function close(){
+        elem_box.style.display="none";
+        document.body.style.height = "auto";
+        showPageContent();
+        // TODO temprary mesure, this line is to be removed
+        elem_box.remove();
+        window.scrollTo(0,currentScrollLocation);
+    }
 }
 showContent("title",content);
 </script>

@@ -5,16 +5,38 @@ var loadArticle = function(b,c,title){
             var response = JSON.parse(xhr.responseText);
             showContent(title,response.content);
         }
-    }
+    };
     xhr.open("POST","http://v.book.ifeng.com/book/remc.htm",true);
     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xhr.send("b="+b+"&c="+c);
 }
 var clickHandler = function(e){
+    e.preventDefault();
     var c = e.target.href;
     c = c.substring(c.indexOf(b)+b.length+1,c.indexOf(".htm"));
-    loadArticle(b,c,e.target.innerText);
-    e.preventDefault();
+    if(canBeRead()){
+        loadArticle(b,c,e.target.innerText);
+        e.target.parentNode.setAttribute("class","redtitle");
+    }else{
+        alert("Need to be vip!");
+    }
+    function canBeRead(){
+        var can = true;
+        if(e.target.nextSibling && e.target.nextSibling.nextSibling
+            &&e.target.nextSibling.nextSibling.innerText=="VIP"){//need auth
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                var magicWord = "qpContentText";// if contain this word, means user have rights to read.
+                if(xhr.readyState==4){
+                    window.m = xhr.responseText.match(magicWord);
+                    can = false;
+                }
+            };
+            xhr.open("GET",e.target.href,false);
+            xhr.send();
+        }
+        return can;
+    }
 }
 l = location.href;//为了简化后续字符操作而做的变量名称简化
 var b = l.substring(l.indexOf(l.match(/\d*.htm/)[0]),l.indexOf(".htm"));
@@ -80,10 +102,16 @@ function showContent(title,content){
         window.scrollTo(0,0);
     },1);
     function hidePageContent(){
-        document.querySelector(".book_neirong").style.display="none";
+        var neirong = document.querySelector(".book_neirong");
+        if(neirong){
+            neirong.style.display="none";
+        }
     }
     function showPageContent(){
-        document.querySelector(".book_neirong").style.display="block";
+        var neirong = document.querySelector(".book_neirong");
+        if(neirong){
+            neirong.style.display="block";
+        }
     }
     hidePageContent();
     function close(){
